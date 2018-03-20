@@ -20,6 +20,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PizzaService } from './services/pizza.service';
 import { OrderService } from './services/order.service';
+import { CartComponent } from './cart/cart.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { OrderService } from './services/order.service';
     MenuComponent,
     HomeComponent,
     UpdatepizzaComponent,
-    FooterComponent
+    FooterComponent,
+    CartComponent,
+    OrderDetailComponent
   ],
   imports: [
     BrowserModule,

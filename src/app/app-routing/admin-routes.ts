@@ -11,14 +11,18 @@ import { MenuComponent } from '../menu/menu.component';
 import { HomeComponent } from '../home/home.component';
 import { UpdatepizzaComponent } from '../updatepizza/updatepizza.component';
 import { FooterComponent } from '../footer/footer.component';
+import { CartComponent } from '../cart/cart.component';
 
 export const adminRoutes: Routes = [
+    {path: 'home',     component:HomeComponent },
+    {path: 'menu', component:MenuComponent},
+    {path: 'cart',     component:CartComponent },
     {path: 'add-pizza', component: AddpizzaComponent},
     {path: 'edit-pizza', component: EditpizzaComponent},
     {path: 'edit-orders',component:EditordersComponent},
     {path:'update-order-status',component:UpdateorderstatusComponent},
     {path:'view-sales',component:ViewsalesComponent},
     {path:'view-feedback',component:ViewfeedbackComponent},
-    {path: 'updatepizza/:id', component: UpdatepizzaComponent }
-  
+    {path: 'updatepizza/:id', component: UpdatepizzaComponent },
+    
   ] 
