@@ -1,0 +1,31 @@
+<div class="container"><table class="table table-bordered">
+  <thead>
+    <tr>
+    <th>Select</th>
+    <th> id </th>
+    <th>Product Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let pizza of pizzas" >
+      <td><button class="btn btn-primary" [routerLink]="['/updatepizza', pizza.id]">Edit</button><button class="btn btn-primary">Delete</button></td>
+      <td>{{pizza.id}}
+      </td>
+      <td>{{pizza.name}}
+      </td>
+      <td>{{pizza.description}}
+        </td>
+        <td>{{pizza.price}}
+          </td>
+    </tr>
+    <!--<tr>
+      <td>
+      </td>
+      <td>
+      </td>
+    </tr>-->
+  </tbody>
+</table>
+</div>

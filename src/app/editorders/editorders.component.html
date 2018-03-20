@@ -1,0 +1,38 @@
+<div class="container"><table class="table table-bordered">
+    <thead>
+      <tr>
+      <th>Select</th>
+      <th> id </th>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Description</th>
+      <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let order of orders" [class.active]="order.id == select">
+        <td>
+          <button type="button" *ngIf="order.id != select" (click)="edittable($event, order)" class="btn btn-primary" >Edit</button>
+          <button type="button" *ngIf="order.id == select" (click)="updatetable($event, order)" class="btn btn-primary" >Update</button>
+          <button type="submit" class="btn btn-primary">Delete</button>
+        </td>
+        <td>{{order.id}}
+        </td>
+        <td [attr.contenteditable]="order.id == select">{{order.name}}
+        </td>
+        <td [attr.contenteditable]="order.id == select">{{order.quantity}}
+        </td>
+        <td [attr.contenteditable]="order.id == select">{{order.description}}
+        </td>
+        <td [attr.contenteditable]="order.id == select">{{order.price}}
+        </td>
+      </tr>
+      <!--<tr>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>-->
+    </tbody>
+  </table>
+  </div>

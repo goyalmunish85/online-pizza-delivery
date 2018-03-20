@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "p"
+    "name": "myapp"
   },
   "apps": [
     {
@@ -19,7 +19,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/bootstrap3/dist/css/bootstrap.min.css",
+        "../node_modules/font-awesome/scss/font-awesome.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

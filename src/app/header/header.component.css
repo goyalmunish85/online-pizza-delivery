@@ -1,0 +1,123 @@
+
+
+.banner{
+   
+    background-image: '..';
+    background-size: cover;
+    padding: 1em 0 2em;
+}
+
+.logo{
+	float:left;
+}
+.logo h1{
+	margin:0;
+}
+.logo h1 a{
+    font-size: 1.5em;
+    font-family: 'Francois One', sans-serif;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.top-nav {
+    margin: 2em 0 0 0;
+	float: right;
+}
+
+.top-nav ul li{
+    display: inline-block;
+    margin: 0 1em;
+    float: left;
+}
+.top-nav ul li:nth-child(6){
+	margin-right:0;
+}
+ul.nav.navbar-nav {
+    float: right;
+}
+
+.top-nav ul li a{
+    color: #fff !important;
+    font-size: 1em;
+    margin: 0;
+    text-decoration: none;
+    padding: 0;
+    padding-bottom: 1em;
+    border-bottom: solid 1px rgba(134, 134, 134, 0);
+}
+.top-nav ul li a:hover{
+    color: #fd5c63 !important;
+    padding-bottom: 1em;
+    border-bottom: solid 1px #fd5c63;
+}
+.top-nav ul li a.active{
+    color: #fd5c63 !important;
+    padding-bottom: 1em;
+    border-bottom: solid 1px #fd5c63;
+}
+.navbar-default {
+    border: none !important;
+    background: none !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+  
+}
+
+/* .row-header{
+    margin: 0px auto;
+    padding: 0px auto;
+}
+
+.row-content{
+    margin: 0px auto;
+    padding: 50px 0px 50px 0px;
+    border-bottom: 1px ridge;
+    min-height: 400px;
+}
+
+.footer{
+    background-color: #D1C4E9;
+    margin: 0px auto;
+    padding: 20px 0px 20px 0px;
+}
+
+.jumbotron{
+    padding: 70px 30px 70px 30px;
+    margin: 0px auto;
+    background: #9575CD;
+    color:floralwhite;
+}
+
+.address{
+    font-size: 80%;   
+    margin: 0px;
+    color: #0f0f0f;
+}
+
+body{
+    padding:50px 0px 0px 0px;
+    z-index:0;
+}
+
+.navbar-inverse {
+     background-color: #512DA8;
+}
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+.carousel {
+    background:#512DA8;
+}
+.carousel-item {
+  height: 300px;
+}
+.carousel-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 300px;
+} */
