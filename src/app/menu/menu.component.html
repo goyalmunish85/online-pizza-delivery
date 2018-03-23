@@ -1,3 +1,46 @@
-<p>
-  menu works!
-</p>
+<!-- <div class="container"><table class="table table-bordered">
+    <thead>
+      <tr>
+      <th>Select</th>
+      <th> id </th>
+      <th>Product Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let pizza of pizzas" >
+        
+        <td>{{pizza.id}}
+        </td>
+        <td>
+          <img class="img-responsive" src={{pizza.image}}>
+          </td>
+        <td>
+        </td>
+        <td>{{pizza.description}}
+          </td>
+          <td>{{pizza.price}}
+            </td>
+      </tr>
+      <!--<tr>
+        <td>
+        </td>
+        <td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div> -->
+
+  <div class="container">    
+      <div class="row">
+        <div class="col-sm-3" *ngFor = "let pizza of pizzas" [routerLink]="['/pizza-detail', pizza.id]">
+          <div class="panel panel-default">
+            <div class="panel-heading">{{pizza.name}}</div>
+            <div class="panel-body"><img src="{{BaseURL + pizza.image}}" class="img-responsive" style="width:100%" alt="Image"></div>
+            <div class="panel-footer">Rs. {{pizza.price}} </div>
+          </div>
+        </div>
+      </div>
+  </div>

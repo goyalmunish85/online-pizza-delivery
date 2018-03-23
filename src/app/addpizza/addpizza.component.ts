@@ -48,6 +48,7 @@ export class AddpizzaComponent implements OnInit {
   createForm(){
     this.addpizzaForm = this.fb.group({
       id: 0,
+      image:'/assets/images/s1.jpg',
       name:'',
       description:'',
       price: 0,

@@ -12,7 +12,7 @@ import { HomeComponent } from '../home/home.component';
 import { UpdatepizzaComponent } from '../updatepizza/updatepizza.component';
 import { FooterComponent } from '../footer/footer.component';
 import { CartComponent } from '../cart/cart.component';
-
+import { PizzadetailComponent } from '../pizzadetail/pizzadetail.component';
 export const adminRoutes: Routes = [
     {path: 'home',     component:HomeComponent },
     {path: 'menu', component:MenuComponent},
@@ -24,5 +24,5 @@ export const adminRoutes: Routes = [
     {path:'view-sales',component:ViewsalesComponent},
     {path:'view-feedback',component:ViewfeedbackComponent},
     {path: 'updatepizza/:id', component: UpdatepizzaComponent },
-    
+    {path: 'pizza-detail/:id', component: PizzadetailComponent }
   ] 

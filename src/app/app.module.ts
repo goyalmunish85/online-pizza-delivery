@@ -22,7 +22,9 @@ import { PizzaService } from './services/pizza.service';
 import { OrderService } from './services/order.service';
 import { CartComponent } from './cart/cart.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
-
+import { PizzadetailComponent } from './pizzadetail/pizzadetail.component';
+import { baseURL } from './models/baseurl';
+import { ProcessHttpmsgService } from './services/process-httpmsg.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,8 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     UpdatepizzaComponent,
     FooterComponent,
     CartComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    PizzadetailComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,12 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
     ReactiveFormsModule
     
   ],
-  providers: [PizzaService, OrderService],
+  providers: [
+    PizzaService, 
+    OrderService,
+    {provide: 'BaseURL', useValue: baseURL},
+    ProcessHttpmsgService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

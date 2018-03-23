@@ -13,8 +13,7 @@ export const Orders: order[] = [
         name: 'pizza2',
         price: 1,
         description: 'abc',
-        quantity:4
-        
+        quantity:4  
     },
     {
         id: 2,

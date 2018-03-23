@@ -1,0 +1,8 @@
+---
+applications:
+- name: myapp-123
+  memory: 512M
+  buildpacks: staticfile_buildpack
+  path: dist
+  services:
+   - mongodb
