@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PizzaService } from './services/pizza.service';
 import { OrderService } from './services/order.service';
+import { CartService } from './services/cart.service';
 import { CartComponent } from './cart/cart.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { PizzadetailComponent } from './pizzadetail/pizzadetail.component';
@@ -62,6 +63,7 @@ import { OrderdetailComponent } from './orderdetail/orderdetail.component';
   providers: [
     PizzaService, 
     OrderService,
+    CartService,
     {provide: 'BaseURL', useValue: baseURL},
     ProcessHttpmsgService
   ],
