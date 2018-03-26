@@ -22,8 +22,5 @@ export class PizzaService {
 
   getPizza(id: number): Observable<pizza> {
     return  this.restangular.one('pizzas',id).get();
-  }
-  
-
- 
+  } 
 }

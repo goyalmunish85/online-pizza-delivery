@@ -1,6 +1,6 @@
 <div class="container">
     <p>{{ p | json }}</p>
-<div class="row">
+<div class="row" *ngIf="p">
     <div class="col-12 col-md-6">
         <form novalidate [formGroup]="updatepizzaForm" (ngSubmit)="onSubmit()">
           <div class="form-group row">
