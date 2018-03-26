@@ -25,6 +25,9 @@ import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { PizzadetailComponent } from './pizzadetail/pizzadetail.component';
 import { baseURL } from './models/baseurl';
 import { ProcessHttpmsgService } from './services/process-httpmsg.service';
+import { RestangularModule, Restangular } from 'ngx-restangular';
+import { RestangularConfigFactory } from './models/restConfig';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +51,8 @@ import { ProcessHttpmsgService } from './services/process-httpmsg.service';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RestangularModule.forRoot(RestangularConfigFactory)
     
   ],
   providers: [

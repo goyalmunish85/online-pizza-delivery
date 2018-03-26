@@ -4,6 +4,9 @@ import { pizza } from '../models/pizza';
 import { PizzaService } from '../services/pizza.service';
 import { PizzaInterface } from '../models/interfaces';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'
+import { RestangularModule, Restangular } from 'ngx-restangular';
 @Component({
   selector: 'app-editpizza',
   templateUrl: './editpizza.component.html',
@@ -12,11 +15,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EditpizzaComponent implements OnInit {
   public pizzas=Pizzas;
-  constructor(private pizzaService: PizzaService) { }
+  constructor(private restangular: Restangular,private pizzaService: PizzaService) { }
 
   ngOnInit() {
     this.pizzaService.getPizzas().subscribe(pizzas => this.pizzas = pizzas);
   }
+  deletepizza(event: any, p: any): Observable<pizza> {
+    console.log(p.id);
+    return this.restangular.one('pizzas',p.id).remove();
+  }
+
 
 }
 

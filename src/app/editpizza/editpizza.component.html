@@ -10,7 +10,9 @@
   </thead>
   <tbody>
     <tr *ngFor = "let pizza of pizzas" >
-      <td><button class="btn btn-primary" [routerLink]="['/updatepizza', pizza.id]">Edit</button><button class="btn btn-primary">Delete</button></td>
+      <td>
+        <button class="btn btn-primary" [routerLink]="['/updatepizza', pizza.id]">Edit</button>
+        <button type="button" class="btn btn-primary" (click)="deletepizza($event, pizza)">Delete</button></td>
       <td>{{pizza.id}}
       </td>
       <td>{{pizza.name}}

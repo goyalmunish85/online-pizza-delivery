@@ -6,24 +6,24 @@ import { baseURL } from '../models/baseurl';
 import { ProcessHttpmsgService } from './process-httpmsg.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
+import { RestangularModule, Restangular } from 'ngx-restangular';
 
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/catch';
 @Injectable()
 export class PizzaService {
-  constructor(private http: Http,
+  constructor(private restangular: Restangular,private http: Http,
     private processHTTPMsgService: ProcessHttpmsgService) { }
 
     getPizzas(): Observable<pizza[]> {
 
-      return this.http.get(baseURL + 'pizzas')
-      .map(res => { return this.processHTTPMsgService.extractData(res); });
+      return this.restangular.all('pizzas').getList();
   }
 
   getPizza(id: number): Observable<pizza> {
-    return  this.http.get(baseURL + 'pizzas/'+ id)
-    .map(res => { return this.processHTTPMsgService.extractData(res); });
+    return  this.restangular.one('pizzas',id).get();
   }
+  
 
  
 }

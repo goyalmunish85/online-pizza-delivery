@@ -4,7 +4,9 @@ import { FormBuilder, FormGroup ,Validators } from '@angular/forms';
 import { pizza, Category } from '../models/pizza';
 import { Params, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
-
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'
+import { RestangularModule, Restangular } from 'ngx-restangular';
 import { PizzaService} from '../services/pizza.service';
 import { Pizzas } from './../constants/pizza-constants';
 
@@ -27,7 +29,7 @@ export class UpdatepizzaComponent implements OnInit {
     this.route.params.switchMap((params: Params)=> this.pizzaservice.getPizza(+params['id'])) 
             .subscribe(p => this.p = p);
   }
-   constructor(private fb: FormBuilder,private pizzaservice: PizzaService, private route: ActivatedRoute) {
+   constructor(private restangular: Restangular,private fb: FormBuilder,private pizzaservice: PizzaService, private route: ActivatedRoute) {
     this.createForm();
   }
   
@@ -40,10 +42,16 @@ export class UpdatepizzaComponent implements OnInit {
       category:''
     });
   }
-  onSubmit(){
-    this.p = this.updatepizzaForm.value;
-    console.log(this.p);
-    this.updatepizzaForm.reset();
+ 
+   
+   
+    
+ 
+  onSubmit(): Observable<pizza> {
+    //this.pizzas.post();
+    console.log(this.p.id);
+    return this.restangular.one('pizzas',this.p.id).customPUT(this.updatepizzaForm.value);
+   // this.updatepizzaForm.reset();
   }
 }
 
