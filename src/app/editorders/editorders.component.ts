@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation,ViewChild } from '@angular/core';
-import { Orders } from './../constants/order-constants';
+// import { Orders } from './../constants/order-constants';
 import { pizza } from '../models/pizza';
 //import { PizzasService } from '../pizzas.service';
 import { PizzaInterface } from '../models/interfaces';
@@ -17,7 +17,7 @@ export class EditordersComponent implements OnInit {
   public select:number;
   ngOnInit() {
   }
-  public orders=Orders;
+  public orders;
   public showTable: boolean = true;
   updatetable(event: any, item: any)
   {

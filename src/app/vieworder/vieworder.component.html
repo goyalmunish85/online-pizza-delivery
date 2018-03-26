@@ -1,3 +1,24 @@
-<p>
-  vieworder works!
-</p>
+<div class="container"><table class="table table-bordered">
+  <thead>
+    <tr>
+    <th>Select</th>
+    <th> id </th>
+   
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let order of orders" >
+      <td>
+        <button class="btn btn-primary" [routerLink]="['/order-detail', order.id]">Details</button>
+       </td>
+      <td>{{order.id}}</td>
+    </tr>
+    <!--<tr>
+      <td>
+      </td>
+      <td>
+      </td>
+    </tr>-->
+  </tbody>
+</table>
+</div>

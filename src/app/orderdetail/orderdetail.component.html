@@ -1,3 +1,37 @@
-<p>
-  orderdetail works!
-</p>
+<div class="container"><table class="table table-bordered">
+  <thead>
+    <tr>
+    <th>Select</th>
+    <th> id </th>
+    <th>Product Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>quantity</th>
+    <th>Order description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let pizza of o.item" >
+      <td>
+      <td>{{pizza.id}}
+      </td>
+      <td>{{pizza.name}}
+      </td>
+      <td>{{pizza.description}}
+        </td>
+        <td>{{pizza.price}}
+          </td>
+          <td>{{pizza.quantity}}
+          </td>
+          <td>{{pizza.orderdescription}}
+          </td>
+    </tr>
+    <!--<tr>
+      <td>
+      </td>
+      <td>
+      </td>
+    </tr>-->
+  </tbody>
+</table>
+</div>

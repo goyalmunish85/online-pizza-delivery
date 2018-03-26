@@ -13,6 +13,9 @@ import { UpdatepizzaComponent } from '../updatepizza/updatepizza.component';
 import { FooterComponent } from '../footer/footer.component';
 import { CartComponent } from '../cart/cart.component';
 import { PizzadetailComponent } from '../pizzadetail/pizzadetail.component';
+import { OrderdetailComponent } from '../orderdetail/orderdetail.component';
+import { VieworderComponent } from '../vieworder/vieworder.component';
+
 export const adminRoutes: Routes = [
     {path: 'home',     component:HomeComponent },
     {path: 'menu', component:MenuComponent},
@@ -22,7 +25,9 @@ export const adminRoutes: Routes = [
     {path: 'edit-orders',component:EditordersComponent},
     {path:'update-order-status',component:UpdateorderstatusComponent},
     {path:'view-sales',component:ViewsalesComponent},
+    {path:'view-order',component:VieworderComponent},
     {path:'view-feedback',component:ViewfeedbackComponent},
     {path: 'updatepizza/:id', component: UpdatepizzaComponent },
-    {path: 'pizza-detail/:id', component: PizzadetailComponent }
+    {path: 'pizza-detail/:id', component: PizzadetailComponent },
+    {path: 'order-detail/:id', component: OrderdetailComponent }
   ] 

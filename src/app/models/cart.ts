@@ -1,7 +1,7 @@
 import { pizza } from './pizza';
 
 export class Cart {
-    item: pizza[];
+    cartitem: pizza[];
     quantity: number;
     description: string; 
 }
