@@ -20,6 +20,8 @@ export class EditpizzaComponent implements OnInit {
   ngOnInit() {
     this.pizzaService.getPizzas().subscribe(pizzas => this.pizzas = pizzas);
   }
+
+  
   deletepizza(event: any, p: any): Observable<pizza> {
     console.log(p.id);
     return this.restangular.one('pizzas',p.id).remove();

@@ -27,6 +27,8 @@ import { baseURL } from './models/baseurl';
 import { ProcessHttpmsgService } from './services/process-httpmsg.service';
 import { RestangularModule, Restangular } from 'ngx-restangular';
 import { RestangularConfigFactory } from './models/restConfig';
+import { VieworderComponent } from './vieworder/vieworder.component';
+import { OrderdetailComponent } from './orderdetail/orderdetail.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { RestangularConfigFactory } from './models/restConfig';
     FooterComponent,
     CartComponent,
     OrderDetailComponent,
-    PizzadetailComponent
+    PizzadetailComponent,
+    VieworderComponent,
+    OrderdetailComponent
   ],
   imports: [
     BrowserModule,
