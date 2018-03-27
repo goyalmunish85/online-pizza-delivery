@@ -43,10 +43,9 @@ export class PizzadetailComponent implements OnInit {
 
   addToCart(event): Observable<pizza> {
     this.p.id += 1;
-    let movie2 = Object.assign(this.addToCartForm.value ,this.p);
-    console.log(movie2);
+    let atocart = Object.assign(this.addToCartForm.value ,this.p);
    
-    return this.restangular.all('cart').customPOST(movie2);
+    return this.restangular.all('cart').customPOST(atocart);
   }
  
 }

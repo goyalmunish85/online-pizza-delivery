@@ -30,7 +30,7 @@ export class CartComponent implements OnInit {
 
   placeorder(event,c) {
   //  console.log(c[0].id);
-      //this.restangular.all('orders').customPOST({"item": this.cartItems});
+      this.restangular.all('orders').customPOST({"item": this.cartItems});
       
       for(var i=0;i<c.length;i++){
         this.restangular.one('cart',c[i].id).remove();
