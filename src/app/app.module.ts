@@ -30,7 +30,7 @@ import { RestangularModule, Restangular } from 'ngx-restangular';
 import { RestangularConfigFactory } from './models/restConfig';
 import { VieworderComponent } from './vieworder/vieworder.component';
 import { OrderdetailComponent } from './orderdetail/orderdetail.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +56,7 @@ import { OrderdetailComponent } from './orderdetail/orderdetail.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,HttpModule, HttpClientModule,
     RestangularModule.forRoot(RestangularConfigFactory)
     
   ],

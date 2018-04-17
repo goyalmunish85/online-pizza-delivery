@@ -1,13 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit,OnChanges  } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
-
 import { CartService } from '../services/cart.service';
 import 'rxjs/add/operator/switchMap';
 import {order} from '../models/order';
 import { pizza } from '../models/pizza';
-
 import { FormBuilder, FormGroup ,Validators } from '@angular/forms';
 import { PizzaService } from '../services/pizza.service';
 import { Pizzas } from './../constants/pizza-constants';
@@ -20,9 +17,9 @@ import { RestangularModule, Restangular } from 'ngx-restangular';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnChanges  {
  
-  constructor(private restangular: Restangular,private cartService: CartService ) { }
+  constructor(private restangular: Restangular,private http: HttpClient, private cartService: CartService ) { }
   cartItems;
   ngOnInit(){
     this.cartService.getCartItems().subscribe(cartItems => this.cartItems = cartItems);
@@ -36,9 +33,21 @@ export class CartComponent implements OnInit {
         this.restangular.one('cart',c[i].id).remove();
       }
   }
+  
+    ngOnChanges(){
+
+    }
+  updatedata(){
+    this.cartService.getCartItems().subscribe(cartItems => {
+      this.cartItems = cartItems;
+      //console.log(this.cartItems);
+    });
+  }
   deleteitem(event: any, p: any) {
-    
-    return this.restangular.one('cart',p.id).remove();
+     console.log(p._id);
+     this.http.delete('http://localhost:3000/cart/' + p._id).subscribe((ok)=>{});
+     //this.restangular.one('cart',p._id).remove();
+     this.updatedata();
   }
   
 }

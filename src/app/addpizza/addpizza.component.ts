@@ -49,8 +49,8 @@ export class AddpizzaComponent implements OnInit {
   
   createForm(){
     this.addpizzaForm = this.fb.group({
-      id: 0,
-      image:'',
+
+      image:'images/s3.jpg',
       name:'',
       description:'',
       price: 0,
@@ -59,6 +59,7 @@ export class AddpizzaComponent implements OnInit {
   }
   onSubmit(): Observable<pizza> {
     //this.pizzas.post();
+    console.log(this.addpizzaForm.value)
     return this.restangular.all('pizzas').post(this.addpizzaForm.value);
   //   this.addpizzaForm.reset({
   //     id: 0,

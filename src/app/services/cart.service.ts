@@ -21,10 +21,9 @@ export class CartService {
     getCartItems(): Observable<Cart[]> {
 
       return this.restangular.all('cart').getList();
-  }
+    }
 
-  getCartItem(id: number): Observable<Cart> {
-    return  this.restangular.one('cart',id).get();
-  }
+    getCartItem(id: number): Observable<Cart> {
+      return  this.restangular.one('cart',id).get();
+    }
 }
-3
