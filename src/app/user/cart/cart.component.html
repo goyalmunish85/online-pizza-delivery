@@ -1,0 +1,79 @@
+<!-- 
+{{cartItems | json}}
+
+<div class="container"><table class="table table-bordered">
+        <thead>
+          <tr>
+          <th>Select</th>
+          <th> id </th>
+          <th>Product Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>quantity</th>
+          <th>Order description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let pizza of cartItems" >
+            <td> <button type="button" class="btn btn-primary" (click)="deleteitem($event, pizza)">Delete</button></td>
+            <td>{{pizza.id}}
+            </td>
+            <td>{{pizza.name}}
+            </td>
+            <td>{{pizza.description}}
+              </td>
+              <td>{{pizza.price}}
+                </td>
+                <td>{{pizza.quantity}}
+                </td>
+                <td>{{pizza.orderdescription}}
+                </td>
+          </tr>
+          <!--<tr>
+            <td>
+            </td>
+            <td>
+            </td>
+          </tr>-->
+        <!-- </tbody>
+      </table>
+      <button type="button" class="btn btn-primary" (click)="placeorder($event, cartItems)">Place Order</button>
+          </div> --> 
+
+
+          <div class="example-container mat-elevation-z8">
+              <mat-table #table [dataSource]="dataSource" matSort>
+            
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                </ng-container>
+            
+                <!-- Weight Column -->
+                <ng-container matColumnDef="weight">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Weight </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+                </ng-container>
+            
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="symbol">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+                </ng-container>
+            
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+            </div>
+            
+            
+            <!-- Copyright 2018 Google Inc. All Rights Reserved.
+                Use of this source code is governed by an MIT-style license that
+                can be found in the LICENSE file at http://angular.io/license -->

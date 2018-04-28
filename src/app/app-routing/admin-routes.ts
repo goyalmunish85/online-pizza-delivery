@@ -1,25 +1,35 @@
 import { Routes } from '@angular/router';
 
 import { HeaderComponent } from '../header/header.component';
-import { AddpizzaComponent } from '../addpizza/addpizza.component';
-import { EditpizzaComponent } from '../editpizza/editpizza.component';
-import { EditordersComponent } from '../editorders/editorders.component';
-import { UpdateorderstatusComponent } from '../updateorderstatus/updateorderstatus.component';
-import { ViewsalesComponent } from '../viewsales/viewsales.component';
-import { ViewfeedbackComponent } from '../viewfeedback/viewfeedback.component';
-import { MenuComponent } from '../menu/menu.component';
+import { AddpizzaComponent } from '../admin/addpizza/addpizza.component';
+import { EditpizzaComponent } from '../admin/editpizza/editpizza.component';
+import { EditordersComponent } from '../admin/editorders/editorders.component';
+import { UpdateorderstatusComponent } from '../admin/updateorderstatus/updateorderstatus.component';
+import { ViewsalesComponent } from '../admin/viewsales/viewsales.component';
+import { ViewfeedbackComponent } from '../admin/viewfeedback/viewfeedback.component';
+import { MenuComponent } from '../user/menu/menu.component';
 import { HomeComponent } from '../home/home.component';
-import { UpdatepizzaComponent } from '../updatepizza/updatepizza.component';
+import { UpdatepizzaComponent } from '../admin/updatepizza/updatepizza.component';
 import { FooterComponent } from '../footer/footer.component';
-import { CartComponent } from '../cart/cart.component';
-import { PizzadetailComponent } from '../pizzadetail/pizzadetail.component';
-import { OrderdetailComponent } from '../orderdetail/orderdetail.component';
-import { VieworderComponent } from '../vieworder/vieworder.component';
+import { CartComponent } from '../user/cart/cart.component';
+import { PizzadetailComponent } from '../user/pizzadetail/pizzadetail.component';
+import { OrderdetailComponent } from '../admin/orderdetail/orderdetail.component';
+import { VieworderComponent } from '../admin/vieworder/vieworder.component';
+import { AuthGuard } from '../auth/auth.guard';
 
+import { LoginComponent } from '../auth/login/login.component';
+import { SignupComponent } from '../auth/signup/signup.component';
+import { WelcomeComponent } from '../welcome/welcome.component';
 export const adminRoutes: Routes = [
-    {path: 'home',     component:HomeComponent },
-    {path: 'menu', component:MenuComponent},
-    {path: 'cart',     component:CartComponent },
+    
+    {path: 'home',     component:HomeComponent , canActivate: [ AuthGuard ]},
+    {path: 'menu', component:MenuComponent , canActivate: [ AuthGuard ]},
+    {path: 'cart',     component:CartComponent , canActivate: [ AuthGuard ]},
+
+    { path: '', component: WelcomeComponent },
+    { path: 'signup', component: SignupComponent },
+    { path: 'login', component: LoginComponent },
+
     {path: 'add-pizza', component: AddpizzaComponent},
     {path: 'edit-pizza', component: EditpizzaComponent},
     {path: 'edit-orders',component:EditordersComponent},
@@ -31,3 +41,5 @@ export const adminRoutes: Routes = [
     {path: 'pizza-detail/:id', component: PizzadetailComponent },
     {path: 'order-detail/:id', component: OrderdetailComponent }
   ] 
+
+  

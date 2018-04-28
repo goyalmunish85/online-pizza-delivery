@@ -1,4 +1,4 @@
- <div class="banner" [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+ <!-- <div class="banner" [ngStyle]="{'background-image': 'url(' + photo + ')'}">
     <div class="container">
       
             <div class="logo">
@@ -29,7 +29,28 @@
       
         
     </div>
-</div>
+</div> -->
+<mat-toolbar>
+    <a routerLink="/"><span><img src="/assets/images/logo.png" height=30 width=41></span></a>
+    <div *ngIf="isAuth" class="links" fxFlex  fxHide.xs>
+        <a routerLink="/home" routerLinkActive="active"><span class="fa fa-home fa-lg"></span> Home</a>
+        <a routerLink="/aboutus" routerLinkActive="active"><span class="fa fa-info fa-lg"></span> About</a>
+        <a routerLink="/menu" routerLinkActive="active"><span class="fa fa-list fa-lg"></span> Menu</a>
+        <a routerLink="/cart" routerLinkActive="active"><span class="fa fa-address-card fa-lg"></span> Contact</a>
+    </div>
+   <span class="flex-spacer"></span>
+   <div  class="links" fxFlex fxLayoutAlign="end" fxHide.xs>
+        <a routerLink="/login" *ngIf="!isAuth">Login</a>
+        <a class="logout" (click)="onLogout()" *ngIf="isAuth">Logout</a>
+    </div>
+</mat-toolbar>
+
+
+
+
+
+
+
 <!-- <nav class="navbar navbar-inverse navbar-toggleable-sm fixed-top">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
