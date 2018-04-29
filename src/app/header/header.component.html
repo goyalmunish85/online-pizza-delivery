@@ -40,8 +40,8 @@
     </div>
    <span class="flex-spacer"></span>
    <div  class="links" fxFlex fxLayoutAlign="end" fxHide.xs>
-        <a routerLink="/login"  mat-button *ngIf="!isAuth"><span class="fa fa-sign-in fa-lg"></span>Login</a>
-        <a class="logout" mat-button (click)="onLogout()" *ngIf="isAuth">Logout</a>
+        <a routerLink="/login"  mat-button *ngIf="!isAuth"><span class="fa fa-sign-in fa-lg"></span> Login</a>
+        <a class="logout" mat-button (click)="onLogout()" *ngIf="isAuth"><span class="fa fa-sign-out fa-lg"></span> Logout</a>
     </div>
 </mat-toolbar>
 
