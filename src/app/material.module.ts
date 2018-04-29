@@ -16,14 +16,14 @@ import {
     MatCardModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    MatDialogModule,
+    MatDialogModule,MatSnackBarModule,
     MatTableModule
 } from '@angular/material';//Importing Angular material modules
 @NgModule({
     imports:[
         MatButtonModule,
         MatCheckboxModule,
-        MatIconModule,MatTableModule,
+        MatIconModule,MatTableModule,MatSnackBarModule,
         MatInputModule,
         MatFormFieldModule,
         MatDatepickerModule,

@@ -1,92 +1,41 @@
-<!-- <div class="container">
-  <div class="row" *ngIf="p">
-  <div class="col-mat-6">
-        <img src="{{BaseURL + p.image}}" class="img-responsive" style="width:100%" alt="Image">
-  </div>
-  <div class="col-mat-6">
-    <div class="row">
-      <h2>{{p.name}}</h2>
-    </div>
-    <div class="row">
-        <p>{{p.description}}</p>
-      </div>
-      <div class="row">
-          <p>{{p.category}}</p>
-        </div>
-        <div class="row">
-            <p>{{p.price}}</p>
-          </div>
-          <div class="row">
-              <div class="col-12 col-mat-6">
-                  <form [formGroup]="addToCartForm" >
-                      <div class="form-group row">
-                          <label for="quantity" class="col-mat-2 col-form-label">Quantity:</label>
-                          <div class="col-mat-10">
-                              <input type="text" formControlName="quantity" class="form-control"id="quantity" name="quantity" placeholder="Quantity">
-                          </div>
-                      </div>
-                    <div class="form-group row">
-                        <label for="description" class="col-mat-2 col-form-label">Description:</label>
-                        <div class="col-mat-10">
-                        <textarea class="form-control" formControlName="orderdescription" rows="5" id="description"></textarea>
-                    </div>
-                  </div>
-
-                    <div class="form-group row">
-                        <div class="col-mat-offset-2 col-mat-10">
-                            <button (click)="addToCart()" class="btn btn-primary btn-block">Add</button>
-                        </div>
-                    </div>
-              </form>
-              </div>
-          
-        </div>
-  </div>
- 
-</div>
-</div> -->
-
-
 <div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-mat="space-around center"
     fxLayoutGap="10px">
-    <div fxFlex="5" *ngIf="p">
-        </div>
-    <div fxFlex="40" *ngIf="p">
+    <div fxFlex="5" *ngIf="selectedPizza">
+    </div>
+    <div fxFlex="40" *ngIf="selectedPizza">
         <mat-card>
             <mat-card-header>
                 <mat-card-title>
-                    <h3>{{p.name | uppercase }}</h3>
+                    <h3>{{selectedPizza.name | uppercase }}</h3>
                 </mat-card-title>
 
             </mat-card-header>
-            <img mat-card-image src="{{BaseURL + p.image}}" alt={{p.name}}>
+            <img mat-card-image src="{{BaseURL + selectedPizza.image}}" alt={{selectedPizza.name}}>
             <mat-card-content>
-                <p>{{p.description}}
+                <p>{{selectedPizza.description}}
                 </p>
             </mat-card-content>
-           
         </mat-card>
     </div>
+    <div fxFlex="5" *ngIf="selectedPizza">
+    </div>
+    <div fxFlex="40" *ngIf="selectedPizza">
+        <form fxLayout="column" #addToCartForm='ngForm'>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Quantity" ngModel name="quantity" required #quantity="ngModel">
+                <mat-error *ngIf="quantity.hasError('required')">Quantity must not be empty</mat-error>
+            </mat-form-field>
 
-    <div fxFlex="40" *ngIf="p">
-            <form [formGroup]="addToCartForm" >
-                  
-                        <label for="quantity" class="col-mat-2 col-form-label">Quantity:</label>
-                      
-                            <input type="text" formControlName="quantity" id="quantity" name="quantity" placeholder="Quantity">
-                      
-                      <label for="description" class="col-mat-2 col-form-label">Description:</label>
-                     
-                      <textarea  formControlName="orderdescription" rows="5" id="description"></textarea>
-              
 
-                
-            </form>
-            <div fxLayout="row" fxLayoutAlign="space-evenly center" >
-                        <button mat-raised-button>Back</button>
-                        <button mat-raised-button color="primary" (click)="addToCart()">Add To Cart</button>
-                     
-                      </div>
-      
+            <mat-form-field>
+                <textarea matInput placeholder="Order Description" ngModel name="orderdescription" matTextareaAutosize matAutosizeMinRows="10"
+                    matAutosizeMaxRows="10"></textarea>
+            </mat-form-field>
+        </form>
+
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+            <button mat-raised-button>Back</button>
+            <button (click)="addToCart(addToCartForm)" mat-raised-button color="primary" [disabled]="addToCartForm.invalid">Add To Cart</button>
+        </div>
     </div>
 </div>
