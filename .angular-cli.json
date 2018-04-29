@@ -21,7 +21,9 @@
       "styles": [
         "styles.css",
         "../node_modules/bootstrap3/dist/css/bootstrap.min.css",
-        "../node_modules/font-awesome/scss/font-awesome.scss"
+        "../node_modules/font-awesome/scss/font-awesome.scss",
+        "../src/assets/material-icons.css"
+
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

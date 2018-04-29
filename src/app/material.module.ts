@@ -36,7 +36,7 @@ import {
         MatCardModule,
         MatSelectModule,MatIconModule,
         MatProgressSpinnerModule,
-        MatDialogModule,MatButtonModule,MatButtonToggleModule
+        MatDialogModule,MatButtonModule,MatButtonToggleModule,MatIconModule
     ],
     exports: [
         MatButtonModule,
@@ -44,7 +44,7 @@ import {
         MatIconModule,MatGridListModule,
         MatInputModule,MatButtonModule,
         MatFormFieldModule,MatButtonToggleModule,
-        MatDatepickerModule,
+        MatDatepickerModule,MatIconModule,
         MatNativeDateModule,
         MatSidenavModule,
         MatToolbarModule,
