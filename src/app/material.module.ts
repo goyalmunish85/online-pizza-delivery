@@ -16,15 +16,16 @@ import {
     MatCardModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    MatDialogModule,MatSnackBarModule,
-    MatTableModule
+    MatDialogModule,MatSnackBarModule, MatGridListModule,
+    MatTableModule,
+    MatButtonToggleModule
 } from '@angular/material';//Importing Angular material modules
 @NgModule({
     imports:[
         MatButtonModule,
         MatCheckboxModule,
         MatIconModule,MatTableModule,MatSnackBarModule,
-        MatInputModule,
+        MatInputModule, MatGridListModule,
         MatFormFieldModule,
         MatDatepickerModule,
         MatNativeDateModule,
@@ -33,22 +34,22 @@ import {
         MatListModule,
         MatTabsModule,
         MatCardModule,
-        MatSelectModule,
+        MatSelectModule,MatIconModule,
         MatProgressSpinnerModule,
-        MatDialogModule
+        MatDialogModule,MatButtonModule,MatButtonToggleModule
     ],
     exports: [
         MatButtonModule,
         MatCheckboxModule,MatTableModule,
-        MatIconModule,
-        MatInputModule,
-        MatFormFieldModule,
+        MatIconModule,MatGridListModule,
+        MatInputModule,MatButtonModule,
+        MatFormFieldModule,MatButtonToggleModule,
         MatDatepickerModule,
         MatNativeDateModule,
         MatSidenavModule,
         MatToolbarModule,
         MatListModule,
-        MatTabsModule,
+        MatTabsModule,MatIconModule,
         MatCardModule,
         MatSelectModule,
         MatProgressSpinnerModule,
