@@ -13,6 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';//for using flexlayout
 //import { FormsModule } from '@angular/forms'//to import reactive form
 
 import { AuthService } from './auth/auth.service'
+import { RoleService } from './auth/role.service'
 
 //All the components created are below
 //import { AppComponent } from './app.component';
@@ -106,8 +107,8 @@ import { AdminComponent } from './admin/admin.component';
     
   ],
   providers: [
-    PizzaService, AuthService,
-    OrderService,
+    PizzaService, AuthService,RoleService,
+    OrderService, 
     CartService,
     {provide: 'BaseURL', useValue: baseURL},
     ProcessHttpmsgService

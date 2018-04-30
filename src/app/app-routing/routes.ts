@@ -16,14 +16,16 @@ import { PizzadetailComponent } from '../user/pizzadetail/pizzadetail.component'
 import { OrderdetailComponent } from '../admin/orderdetail/orderdetail.component';
 import { VieworderComponent } from '../admin/vieworder/vieworder.component';
 import { AuthGuard } from '../auth/auth.guard';
+import { RoleGuard } from '../auth/role.guard';
+
 
 import { LoginComponent } from '../auth/login/login.component';
 import { SignupComponent } from '../auth/signup/signup.component';
 import { WelcomeComponent } from '../welcome/welcome.component';
-export const adminRoutes: Routes = [
+export const routes: Routes = [
     
     {path: 'home',     component:HomeComponent , canActivate: [ AuthGuard ]},
-    {path: 'menu', component:MenuComponent , canActivate: [ AuthGuard ]},
+    {path: 'menu', component:MenuComponent , canActivate: [ RoleGuard, AuthGuard ]},
     {path: 'cart',     component:CartComponent , canActivate: [ AuthGuard ]},
 
     { path: '', component: WelcomeComponent },
@@ -40,6 +42,6 @@ export const adminRoutes: Routes = [
     {path: 'updatepizza/:id', component: UpdatepizzaComponent },
     {path: 'pizza-detail/:id', component: PizzadetailComponent },
     {path: 'order-detail/:id', component: OrderdetailComponent }
-  ] 
+] 
 
   

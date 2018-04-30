@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth/auth.guard';
+import { RoleGuard } from '../auth/role.guard';
 
-import { adminRoutes } from './admin-routes';
-import { userRoutes } from './user-routes';
+import { routes } from './routes';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(adminRoutes)
+    RouterModule.forRoot(routes)
   ],
   exports: [ RouterModule ],
   declarations: [],
   providers:[ 
-    AuthGuard 
+    AuthGuard,RoleGuard
   ]
 })
 export class AppRoutingModule { }
