@@ -26,7 +26,7 @@ export class AuthService {
     this.user = {
       email: authdata.email,
       userId: Math.round(Math.random()*10000).toString(),
-      admin: false
+      admin: true
         };
     this.authSuccessfully(this.user.admin);
   }

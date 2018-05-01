@@ -1,0 +1,17 @@
+.full-width {
+    width: 90%
+}
+
+.half-width {
+    width: 45%
+}
+
+.form-size {
+    width: 45%
+}
+
+@media only screen and (max-width: 600px) {
+    .form-size {
+        width: 100%
+    }
+}

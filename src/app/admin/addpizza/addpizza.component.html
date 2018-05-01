@@ -1,111 +1,47 @@
-<div class="container">
-        <p>{{ p | json }}</p>
-    <div class="row">
-        <div class="col-12 col-md-6">
-            <form novalidate [formGroup]="addpizzaForm" (ngSubmit)="onSubmit()">
-              <div class="form-group row">
-                  <label for="productId" class="col-md-2 col-form-label">Product Id:</label>
-                  <div class="col-md-10">
-                      <input type="number" class="form-control"  id="productId" name="productId"  placeholder="Product Id">
-                  </div>
-              </div>
-              <div class="form-group row">
-                  <label for="productName" class="col-md-2 col-form-label">Select File:</label>
-                  <div class="col-md-10">
-                      <input type="file" class="form-control"  id="file" name="file" >
-                  </div>
-              </div>
-              <div class="form-group row">
-                  <label for="productName" class="col-md-2 col-form-label">Product Name:</label>
-                  <div class="col-md-10">
-                      <input type="text" class="form-control" formControlName="name" id="productName" name="productName" placeholder="Product Name">
-                  </div>
-              </div>
-              <div class="form-group row">
-                  <label for="description" class="col-md-2 col-form-label">Description:</label>
-                  <div class="col-md-10">
-                  <textarea class="form-control" formControlName="description" rows="5" id="description"></textarea>
-              </div>
-            </div>
-            <div class="form-group row">
-                <label for="price" class="col-md-2 col-form-label">Price:</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" formControlName="price" id="price" name="price" placeholder="Price">
-                </div>
-            </div>
-              <div class="form-group row">
-                <label for="sel1" class="col-md-2 col-form-label">Category:</label>
-                <div class="col-md-10">
-                        <select class="form-control" formControlName="category">
-                                <option *ngFor="let c of category" [value]="c">
-                                {{ c }}
-                                </option>
-                            </select></div>
-              </div>
-              
-              <div class="form-group row">
-                  <div class="col-md-offset-2 col-md-10">
-                      <button type="submit" class="btn btn-primary btn-block">Add</button>
-                  </div>
-              </div>
-        </form>
-        </div>
-    
-  </div>
-  </div>
 
-  
 
-<!-- <div class="container">
-  <div class="row">
-      <div class="col-12 col-md-6">
-        <form #addpizzaForm="ngForm" (ngSubmit)="submitaddpizzaForm(addpizzaForm)">
-            <div class="form-group row">
-                <label for="productId" class="col-md-2 col-form-label">Product Id:</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" id="productId"  name="productId"  placeholder="Product Id" ngModel>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="productName" class="col-md-2 col-form-label">Select File:</label>
-                <div class="col-md-10">
-                    <input type="file" class="form-control" id="file" name="file" >
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="productName" class="col-md-2 col-form-label">Product Name:</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control" id="productName" name="productName" placeholder="Product Name" ngModel>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="description" class="col-md-2 col-form-label">Description:</label>
-                <div class="col-md-10">
-                <textarea class="form-control" rows="5" id="description" ngModel></textarea>
-            </div>
-          </div>
-          <div class="form-group row">
-              <label for="price" class="col-md-2 col-form-label">Price:</label>
-              <div class="col-md-10">
-                  <input type="text" class="form-control" id="price" name="price" placeholder="Price" ngModel>
-              </div>
-          </div>
-            <div class="form-group row">
-              <label for="sel1" class="col-md-2 col-form-label">Select:</label>
-              <div class="col-md-10">
-              <select class="form-control" id="sel1">
-                <option>Veg</option>
-                <option>Non-Veg</option>
-              </select></div>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" (click)="addpizza()" class="btn btn-primary btn-block">Add</button>
-                </div>
-            </div>
-      </form>
+
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+     
+    <div fxFlex fxFlexOffset="20px" class="form-size">
+        
+            <form class="example-form" #addPizzaForm='ngForm' (ngSubmit)="submit(addPizzaForm)">
+
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" placeholder="Pizza Name" ngModel name="name" required #name="ngModel">
+                        <mat-error *ngIf="name.hasError('required')">Pizza Name is required</mat-error>
+                    </mat-form-field>
+                
+                
+                
+                    <mat-form-field class="full-width">
+                        <textarea matInput placeholder="Description" ngModel name="description" required matTextareaAutosize matAutosizeMinRows="10"
+                            matAutosizeMaxRows="10"></textarea>
+                        <mat-error *ngIf="name.hasError('required')">Description is required</mat-error>
+                
+                    </mat-form-field>
+                
+                    <mat-form-field class="half-width">
+                        <input matInput type="number" placeholder="Price" ngModel name="price" required #price="ngModel">
+                        <mat-error *ngIf="price.hasError('required')">Price is required</mat-error>
+                
+                    </mat-form-field>
+                
+                    <mat-form-field class="half-width">
+                        <mat-select placeholder="Category" required [(ngModel)]="selectedValue" name="category">
+                            <mat-option *ngFor="let ctgy of category" [value]="ctgy">
+                                {{ ctgy }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="name.hasError('required')">Category must be select</mat-error>
+                
+                    </mat-form-field>
+                
+                
+                    <button type="submit" mat-raised-button color="primary" [disabled]="addPizzaForm.invalid">Submit</button>
+                </form>
       </div>
-  
 </div>
-</div> -->
-

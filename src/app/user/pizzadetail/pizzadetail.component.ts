@@ -31,7 +31,7 @@ export class PizzadetailComponent implements OnInit {
   }
 
   addToCart(form: NgForm): Observable<pizza> {
-    this.selectedPizza.id += 1;
+   // this.selectedPizza.id += 1;
     let atocart = Object.assign(form.value, this.selectedPizza);
     let message = "Added!";
     let action = "Done";

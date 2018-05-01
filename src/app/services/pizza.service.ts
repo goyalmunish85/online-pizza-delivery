@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { pizza } from '../models/pizza';
-import { Pizzas } from '../constants/pizza-constants';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { baseURL } from '../models/baseurl';
 import { ProcessHttpmsgService } from './process-httpmsg.service';
@@ -31,8 +32,10 @@ export class PizzaService {
       headers.append('Accept', 'application/json');
       return headers;
     }
+    httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
+    
     postPizza(pizza): Observable<Response> {
-      return this.http.post(baseURL + 'pizzas', JSON.stringify(pizza), { headers: this.getHeaders() });
+      return this.http.post(baseURL + 'pizzas', pizza, { headers: this.getHeaders() });
     }
     
 }

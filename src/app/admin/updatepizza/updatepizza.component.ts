@@ -8,7 +8,6 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import { RestangularModule, Restangular } from 'ngx-restangular';
 import { PizzaService} from '../../services/pizza.service';
-import { Pizzas } from '../../constants/pizza-constants';
 
 @Component({
   selector: 'app-updatepizza',
@@ -20,7 +19,7 @@ export class UpdatepizzaComponent implements OnInit {
   value={};
   updatepizzaForm: FormGroup;
   
-  pizzas= Pizzas;
+
   p: pizza;
   category = Category;
  
@@ -47,12 +46,12 @@ export class UpdatepizzaComponent implements OnInit {
    
     
  
-  onSubmit(): Observable<pizza> {
-    //this.pizzas.post();
-    console.log(this.p.id);
-    return this.restangular.one('pizzas',this.p.id).customPUT(this.updatepizzaForm.value);
-   // this.updatepizzaForm.reset();
-  }
+  // onSubmit(): Observable<pizza> {
+  //   //this.pizzas.post();
+  // //   console.log(this.p.id);
+  // //   return this.restangular.one('pizzas',this.p.id).customPUT(this.updatepizzaForm.value);
+  // //  // this.updatepizzaForm.reset();
+  // }
 }
 
  

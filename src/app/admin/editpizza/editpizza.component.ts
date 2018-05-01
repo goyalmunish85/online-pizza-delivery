@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation,ViewChild } from '@angular/core';
-import { Pizzas } from '../../constants/pizza-constants';
+
 import { pizza } from '../../models/pizza';
 import { PizzaService } from '../../services/pizza.service';
 import { PizzaInterface } from '../../models/interfaces';
@@ -14,7 +14,7 @@ import { RestangularModule, Restangular } from 'ngx-restangular';
   encapsulation: ViewEncapsulation.None
 })
 export class EditpizzaComponent implements OnInit {
-  public pizzas=Pizzas;
+  pizzas;
   constructor(private restangular: Restangular,private pizzaService: PizzaService) { }
 
   ngOnInit() {

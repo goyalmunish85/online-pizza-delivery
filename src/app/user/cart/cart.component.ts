@@ -7,7 +7,7 @@ import {order} from '../../models/order';
 import { pizza } from '../../models/pizza';
 import { FormBuilder, FormGroup ,Validators } from '@angular/forms';
 import { PizzaService } from '../../services/pizza.service';
-import { Pizzas } from '../../constants/pizza-constants';
+
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
