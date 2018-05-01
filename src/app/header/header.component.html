@@ -1,4 +1,4 @@
- <!-- <div class="banner" [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+<!-- <div class="banner" [ngStyle]="{'background-image': 'url(' + photo + ')'}">
     <div class="container">
       
             <div class="logo">
@@ -31,17 +31,36 @@
     </div>
 </div> -->
 <mat-toolbar color="primary">
-    <a routerLink="/"><span><img src="/assets/images/logo.png" height=30 width=41></span></a>
-    <div *ngIf="isAuth" class="links" fxFlex  fxHide.xs>
-        <a routerLink="/home" mat-button routerLinkActive="active"><span class="fa fa-home fa-lg"></span> Home</a>
+    <a routerLink="/">
+        <span>
+            <img src="" height=30 width=41>
+        </span>
+    </a>
+    <div *ngIf="isAuth && !isAdmin" class="links" fxFlex fxHide.xs>
+        <a routerLink="/home" mat-button routerLinkActive="active">
+            <span class="fa fa-home fa-lg"></span> Home</a>
         <!-- <a routerLink="/aboutus" mat-button  routerLinkActive="active"><span class="fa fa-info fa-lg"></span> About</a> -->
-        <a routerLink="/menu" mat-button routerLinkActive="active"><span class="fa fa-list fa-lg"></span> Menu</a>
-        <a routerLink="/cart" mat-button routerLinkActive="active"><span class="fa fa-shopping-cart fa-lg"></span> Cart</a>
+        <a routerLink="/menu" mat-button routerLinkActive="active">
+            <span class="fa fa-list fa-lg"></span> Menu</a>
+        <a routerLink="/cart" mat-button routerLinkActive="active">
+            <span class="fa fa-shopping-cart fa-lg"></span> Cart</a>
     </div>
-   <span class="flex-spacer"></span>
-   <div  class="links" fxFlex fxLayoutAlign="end" fxHide.xs>
-        <a routerLink="/login"  mat-button *ngIf="!isAuth"><span class="fa fa-sign-in fa-lg"></span> Login</a>
-        <a class="logout" mat-button (click)="onLogout()" *ngIf="isAuth"><span class="fa fa-sign-out fa-lg"></span> Logout</a>
+    <div *ngIf="isAuth && isAdmin" class="links" fxFlex fxHide.xs>
+        <a routerLink='add-pizza'  mat-button  routerLinkActive="active">Add Pizza</a>
+        <a routerLink='edit-pizza'  mat-button  routerLinkActive="active">Edit Pizza</a>
+        <a routerLink='view-order'  mat-button  routerLinkActive="active">View Order</a>
+        <a routerLink='edit-orders'  mat-button  routerLinkActive="active">Edit Orders</a>
+
+        <a routerLink='update-order-status'  mat-button  routerLinkActive="active">Update Order Status</a>
+        <a routerLink='view-feedback'  mat-button  routerLinkActive="active">View Feedback</a>
+        <a routerLink='view-sales'  mat-button routerLinkActive="active">View Sales</a>
+    </div>
+    <span class="flex-spacer"></span>
+    <div class="links" fxFlex fxLayoutAlign="end" fxHide.xs>
+        <a routerLink="/login" mat-button *ngIf="!isAuth">
+            <span class="fa fa-sign-in fa-lg"></span> Login</a>
+        <a class="logout" mat-button (click)="onLogout()" *ngIf="isAuth">
+            <span class="fa fa-sign-out fa-lg"></span> Logout</a>
     </div>
 </mat-toolbar>
 

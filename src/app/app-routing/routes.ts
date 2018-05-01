@@ -25,7 +25,7 @@ import { WelcomeComponent } from '../welcome/welcome.component';
 export const routes: Routes = [
     
     {path: 'home',     component:HomeComponent , canActivate: [ AuthGuard ]},
-    {path: 'menu', component:MenuComponent , canActivate: [ RoleGuard, AuthGuard ]},
+    {path: 'menu', component:MenuComponent , canActivate: [ RoleGuard]},
     {path: 'cart',     component:CartComponent , canActivate: [ AuthGuard ]},
 
     { path: '', component: WelcomeComponent },

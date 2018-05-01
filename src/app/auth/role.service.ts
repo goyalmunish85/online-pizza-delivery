@@ -13,7 +13,8 @@ export class RoleService {
   registerUser(authdata: AuthData){
     this.user = {
       email: authdata.email,
-      userId: Math.round(Math.random()*10000).toString() 
+      userId: Math.round(Math.random()*10000).toString(),
+      admin : true 
     };
     this.authSuccessfully();
   }
@@ -21,7 +22,8 @@ export class RoleService {
   login(authdata: AuthData ){
     this.user = {
       email: authdata.email,
-      userId: Math.round(Math.random()*10000).toString() 
+      userId: Math.round(Math.random()*10000).toString(),
+      admin: true  
     };
     this.authSuccessfully();
   }

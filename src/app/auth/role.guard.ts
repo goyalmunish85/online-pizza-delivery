@@ -2,17 +2,19 @@
 
 import { Injectable } from '@angular/core';//To inject service
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { RoleService } from './role.service';
+import { AuthService } from './auth.service';
 
 @Injectable() 
 export class RoleGuard implements CanActivate{
-    constructor(private role: RoleService, private router: Router) { }
+    constructor(private authser: AuthService, private router: Router) { }
     
     //standard method used to implement CanActivate
     canActivate( route :ActivatedRouteSnapshot, state: RouterStateSnapshot ){
-        if(true){
+        if(this.authser.isAdmin() == true){
             return true;
         }
-        
+        else{
+            this.router.navigate(['/login']);
+        }
     }
 }

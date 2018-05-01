@@ -10,7 +10,7 @@
   </div>
   <div fxFlex *ngIf="pizzas">
     <mat-grid-list [cols]="nbCols" rowHeight="200px">
-      <mat-grid-tile *ngFor="let pizza of filterItemsOfType()" [routerLink]="['/pizza-detail', pizza.id]">
+      <mat-grid-tile *ngFor="let pizza of filterItemsOfType()" [routerLink]="['/pizza-detail', pizza._id]">
         <img height="200px" src="{{BaseURL + pizza.image}}" alt={{pizza.name}}>
         <mat-grid-tile-footer>
           <h1 mat-line> {{pizza.name| uppercase}} </h1>

@@ -13,9 +13,13 @@ export class MenuComponent implements OnInit {
     @Inject('BaseURL') private BaseURL) { }
     value: String;
   pizzas;
+  errMess: string;
+
   private nbCols: number = 2;
   ngOnInit() {
-    this.pizzaService.getPizzas().subscribe(pizzas => this.pizzas = pizzas);
+   
+    this.pizzaService.getPizzas().subscribe(pizzas => this.pizzas = pizzas,
+      errmess => this.errMess = <any>errmess);
     this.value = "Veg";
     this.updateGrids();
     this.media.subscribe(() => {

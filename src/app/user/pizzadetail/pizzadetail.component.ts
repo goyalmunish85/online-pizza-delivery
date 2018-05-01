@@ -23,7 +23,7 @@ export class PizzadetailComponent implements OnInit {
   selectedPizza: pizza;
   ngOnInit() {
     //this.pizzaservice.getPizzas().subscribe(pizzas => this.pizzas = pizzas);
-    this.route.params.switchMap((params: Params) => this.pizzaservice.getPizza(+params['id']))
+    this.route.params.switchMap((params: Params) => this.pizzaservice.getPizza(params['id']))
       .subscribe(selectedPizza => this.selectedPizza = selectedPizza);
   }
   constructor(public snackBar: MatSnackBar, private restangular: Restangular, private fb: FormBuilder, private pizzaservice: PizzaService, private route: ActivatedRoute,

@@ -16,11 +16,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private authser: AuthService) { }
 
   isAuth : boolean = false;
+  isAdmin : boolean = false;
   authSubscription: Subscription; 
 
   ngOnInit() {
     this.authSubscription = this.authser.authChange.subscribe( authStatus => {
       this.isAuth = authStatus;
+    })
+    this.authSubscription = this.authser.authAdmin.subscribe( authStatus => {
+      this.isAdmin = authStatus;
     })
   }
 

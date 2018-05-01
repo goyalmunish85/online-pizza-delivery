@@ -3,27 +3,32 @@ import { Router } from '@angular/router';
 import { User } from './user.model';
 import { AuthData } from './auth-data.model';
 import { Subject } from 'rxjs/Subject';
+import { RestangularModule, Restangular } from 'ngx-restangular';
 
 @Injectable()
 export class AuthService {
   private user: User;
-  
+  admin: true;
   authChange = new Subject<boolean>();//Sends data onChange
-  
+  authAdmin = new Subject<boolean>();//Sends data onChange
+ 
   registerUser(authdata: AuthData){
     this.user = {
       email: authdata.email,
-      userId: Math.round(Math.random()*10000).toString() 
+      userId: Math.round(Math.random()*10000).toString(),
+      admin: false
     };
-    this.authSuccessfully();
+    this.restangular.all('User').customPOST(this.user);
+    this.authSuccessfully(this.user.admin);
   }
 
   login(authdata: AuthData ){
     this.user = {
       email: authdata.email,
-      userId: Math.round(Math.random()*10000).toString() 
-    };
-    this.authSuccessfully();
+      userId: Math.round(Math.random()*10000).toString(),
+      admin: false
+        };
+    this.authSuccessfully(this.user.admin);
   }
 
   logout(){
@@ -43,14 +48,17 @@ export class AuthService {
   {
     return this.user != null;
   }
-
-  authSuccessfully()
+  isAdmin(){
+    return true;
+  }
+  authSuccessfully(admin: boolean)
   {
     this.authChange.next(true);
+    this.authAdmin.next(admin);
     this.router.navigate(['/home']);
   }
   
 
-  constructor( private router: Router ) { }
+  constructor( private router: Router, private restangular: Restangular ) { }
 
 }
