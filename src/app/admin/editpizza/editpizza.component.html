@@ -1,32 +1,3 @@
-<!-- <div class="container"><table class="table table-bordered">
-  <thead>
-    <tr>
-    <th>Select</th>
-    <th> id </th>
-    <th>Product Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor = "let pizza of pizzas" >
-      <td>
-        <button class="btn btn-primary" [routerLink]="['/updatepizza', pizza._id]">Edit</button>
-        <button type="button" class="btn btn-primary" (click)="deletepizza($event, pizza)">Delete</button></td>
-      <td>{{pizza.id}}
-      </td>
-      <td>{{pizza.name}}
-      </td>
-      <td>{{pizza.description}}
-        </td>
-        <td>{{pizza.price}}
-          </td>
-    </tr>
-   
-  </tbody>
-</table>
-</div> -->
-
 <div>
     <mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="select">

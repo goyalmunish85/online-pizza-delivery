@@ -12,4 +12,7 @@
   .mat-header-cell.mat-sort-header-sorted {
     color: black;
   }
-  
+  .image-size{
+    height: 50px;
+    widows: 50px;
+}

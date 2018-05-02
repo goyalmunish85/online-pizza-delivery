@@ -1,7 +1,6 @@
-import { pizza } from './pizza';
-
 export class Cart {
-    cartitem: pizza[];
+    u_id : string;
+    p_id : string;
     quantity: number;
     orderdescription: string; 
 }

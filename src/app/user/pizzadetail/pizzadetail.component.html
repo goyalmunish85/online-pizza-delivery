@@ -22,7 +22,7 @@
     <div fxFlex="40" *ngIf="selectedPizza">
         <form fxLayout="column" #addToCartForm='ngForm'>
             <mat-form-field>
-                <input matInput type="text" placeholder="Quantity" ngModel name="quantity" required #quantity="ngModel">
+                <input matInput type="number" placeholder="Quantity" ngModel name="quantity" required #quantity="ngModel">
                 <mat-error *ngIf="quantity.hasError('required')">Quantity must not be empty</mat-error>
             </mat-form-field>
 

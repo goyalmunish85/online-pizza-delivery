@@ -41,38 +41,47 @@
           </div> --> 
 
 
-          <div class="example-container mat-elevation-z8">
-              <mat-table #table [dataSource]="dataSource" matSort>
-            
-                <!-- Position Column -->
-                <ng-container matColumnDef="position">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-                </ng-container>
-            
-                <!-- Name Column -->
+          <div>
+              <mat-table [dataSource]="dataSource">
+                  <ng-container matColumnDef="select">
+                      <mat-header-cell *matHeaderCellDef>
+                       Select
+                      </mat-header-cell>
+                      <mat-cell *matCellDef="let pizza">
+                          <button mat-raised-button color="primary" [routerLink]="['/updatepizza', pizza._id]">Primary</button>
+                          <button mat-raised-button (click)="deletepizza($event, pizza)">Delete</button>
+                      </mat-cell>
+                    </ng-container>
                 <ng-container matColumnDef="name">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                  <mat-header-cell *matHeaderCellDef> Pizza Name </mat-header-cell>
+                  <mat-cell *matCellDef="let pizza"> {{pizza.name}} </mat-cell>
                 </ng-container>
-            
-                <!-- Weight Column -->
-                <ng-container matColumnDef="weight">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> Weight </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+                <ng-container matColumnDef="image">
+                  <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
+                  <mat-cell *matCellDef="let pizza"><mat-card class="example-card">
+                     
+           
+                   
+                      <img class="image-size"  src="{{BaseURL + pizza.image}}" alt={{pizza.name}}>
+                  
+                    </mat-card></mat-cell>
                 </ng-container>
-            
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="symbol">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </mat-header-cell>
-                  <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+                <ng-container matColumnDef="description">
+                  <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+                  <mat-cell *matCellDef="let pizza"> {{pizza.description}} </mat-cell>
                 </ng-container>
-            
+                <ng-container matColumnDef="price">
+                  <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+                  <mat-cell *matCellDef="let pizza"> {{pizza.price}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="category">
+                    <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+                    <mat-cell *matCellDef="let pizza"> {{pizza.category}} </mat-cell>
+                </ng-container>
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
               </mat-table>
             </div>
-            
             
             <!-- Copyright 2018 Google Inc. All Rights Reserved.
                 Use of this source code is governed by an MIT-style license that
