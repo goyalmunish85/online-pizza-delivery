@@ -11,6 +11,7 @@ import { RestangularModule, Restangular } from 'ngx-restangular';
 
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/catch';
+import { ok } from 'assert';
 @Injectable()
 export class PizzaService {
   constructor(private restangular: Restangular,private http: Http,
@@ -36,6 +37,13 @@ export class PizzaService {
     
     postPizza(pizza): Observable<Response> {
       return this.http.post(baseURL + 'pizzas', pizza, { headers: this.getHeaders() });
+    }
+    updatePizza(pizza, id:any): Observable<Response> {
+      return this.http.put(baseURL + 'pizzas/'+ id, pizza, { headers: this.getHeaders() });
+    }
+
+    deletePizza(id: any): Observable<Response>{
+      return this.http.delete(baseURL + 'pizzas/'+ id, { headers: this.getHeaders()});
     }
     
 }

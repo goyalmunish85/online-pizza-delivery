@@ -1,4 +1,4 @@
-<div class="container"><table class="table table-bordered">
+<!-- <div class="container"><table class="table table-bordered">
   <thead>
     <tr>
     <th>Select</th>
@@ -11,7 +11,7 @@
   <tbody>
     <tr *ngFor = "let pizza of pizzas" >
       <td>
-        <button class="btn btn-primary" [routerLink]="['/updatepizza', pizza.id]">Edit</button>
+        <button class="btn btn-primary" [routerLink]="['/updatepizza', pizza._id]">Edit</button>
         <button type="button" class="btn btn-primary" (click)="deletepizza($event, pizza)">Delete</button></td>
       <td>{{pizza.id}}
       </td>
@@ -22,12 +22,49 @@
         <td>{{pizza.price}}
           </td>
     </tr>
-    <!--<tr>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>-->
+   
   </tbody>
 </table>
-</div>
+</div> -->
+
+<div>
+    <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef>
+             Select
+            </mat-header-cell>
+            <mat-cell *matCellDef="let pizza">
+                <button mat-raised-button color="primary" [routerLink]="['/updatepizza', pizza._id]">Primary</button>
+                <button mat-raised-button (click)="deletepizza($event, pizza)">Delete</button>
+            </mat-cell>
+          </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Pizza Name </mat-header-cell>
+        <mat-cell *matCellDef="let pizza"> {{pizza.name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
+        <mat-cell *matCellDef="let pizza"><mat-card class="example-card">
+           
+ 
+         
+            <img class="image-size"  src="{{BaseURL + pizza.image}}" alt={{pizza.name}}>
+        
+          </mat-card></mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+        <mat-cell *matCellDef="let pizza"> {{pizza.description}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let pizza"> {{pizza.price}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="category">
+          <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+          <mat-cell *matCellDef="let pizza"> {{pizza.category}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>

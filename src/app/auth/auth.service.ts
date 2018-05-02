@@ -4,7 +4,10 @@ import { User } from './user.model';
 import { AuthData } from './auth-data.model';
 import { Subject } from 'rxjs/Subject';
 import { RestangularModule, Restangular } from 'ngx-restangular';
-
+import { baseURL } from '../models/baseurl';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
 @Injectable()
 export class AuthService {
   private user: User;
@@ -12,21 +15,23 @@ export class AuthService {
   authChange = new Subject<boolean>();//Sends data onChange
   authAdmin = new Subject<boolean>();//Sends data onChange
  
-  registerUser(authdata: AuthData){
-    this.user = {
-      email: authdata.email,
-      userId: Math.round(Math.random()*10000).toString(),
-      admin: false
-    };
-    this.restangular.all('User').customPOST(this.user);
-    this.authSuccessfully(this.user.admin);
+  registerUser(authdata: AuthData): Observable<Response> {
+    console.log(authdata);
+    this.authSuccessfully(true);
+   return  this.http.post(baseURL + 'users', authdata, { headers: this.getHeaders() });
+    //this.restangular.all('User').customPOST(this.user);
+    
   }
-
+  private getHeaders(){
+    let headers = new Headers();
+    headers.append('Accept', 'application/json');
+    return headers;
+  }
   login(authdata: AuthData ){
     this.user = {
       email: authdata.email,
       userId: Math.round(Math.random()*10000).toString(),
-      admin: true
+      admin: false
         };
     this.authSuccessfully(this.user.admin);
   }
@@ -59,6 +64,6 @@ export class AuthService {
   }
   
 
-  constructor( private router: Router, private restangular: Restangular ) { }
+  constructor( private router: Router, private restangular: Restangular, private http: Http ) { }
 
 }

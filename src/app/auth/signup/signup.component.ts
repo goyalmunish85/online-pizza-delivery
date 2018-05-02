@@ -22,10 +22,15 @@ export class SignupComponent implements OnInit {
   hide=true;
 
   submit(form : NgForm){
-    console.log(form.value);
-    this.authser.registerUser({
-      email: form.value.email,
-      password: form.value.password
+   // console.log(form.value);
+    this.authser.registerUser(form.value)
+    .subscribe(response => {
+      let status = response.status;
+      //alert(`the response is : ${response.body.name}`);
+      console.log(response);
+    }, error => {
+      alert(`Error is : ${error.error.message}`);
+      console.log(error);
     })
   }
 

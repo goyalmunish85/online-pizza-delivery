@@ -16,42 +16,41 @@ import { PizzaService} from '../../services/pizza.service';
 })
 export class UpdatepizzaComponent implements OnInit {
 
-  value={};
-  updatepizzaForm: FormGroup;
   
 
-  p: pizza;
+  selectedPizza;
   category = Category;
  
   ngOnInit() {
     //this.pizzaservice.getPizzas().subscribe(pizzas => this.pizzas = pizzas);
-    this.route.params.switchMap((params: Params)=> this.pizzaservice.getPizza(+params['id'])) 
-            .subscribe(p => this.p = p);
+    this.route.params.switchMap((params: Params)=> this.pizzaservice.getPizza(params['id'])) 
+            .subscribe(p => this.selectedPizza = p);
   }
-   constructor(private restangular: Restangular,private fb: FormBuilder,private pizzaservice: PizzaService, private route: ActivatedRoute) {
-    this.createForm();
+
+  Pizza: pizza;
+
+  constructor(private pizzaservice: PizzaService, private route: ActivatedRoute) {
   }
-  
-  createForm(){
-    this.updatepizzaForm = this.fb.group({
-      id: 0,
-      name:'',
-      description:'',
-      price: 0,
-      category:''
-    });
-  }
- 
-   
-   
+
+  submit(form: NgForm) {
+    this.Pizza = {
+      name: form.value.name,
+      image: 'images/s3.jpg',
+      description: form.value.description,
+      price: form.value.price,
+      category: form.value.category
+    };
     
- 
-  // onSubmit(): Observable<pizza> {
-  //   //this.pizzas.post();
-  // //   console.log(this.p.id);
-  // //   return this.restangular.one('pizzas',this.p.id).customPUT(this.updatepizzaForm.value);
-  // //  // this.updatepizzaForm.reset();
-  // }
+    this.pizzaservice.updatePizza(this.Pizza,this.selectedPizza._id)
+      .subscribe(response => {
+        let status = response.status;
+        //alert(`the response is : ${response.body.name}`);
+        console.log(response);
+      }, error => {
+        alert(`Error is : ${error.error.message}`);
+        console.log(error);
+      })
+  }
 }
 
  
