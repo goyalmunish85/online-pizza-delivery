@@ -14,19 +14,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor = "let pizza of cartItems" >
-            <td> <button type="button" class="btn btn-primary" (click)="deleteitem($event, pizza)">Delete</button></td>
-            <td>{{pizza.id}}
+          <tr *ngFor = "let cartItem of cartItems" >
+            <td> <button type="button" class="btn btn-primary" (click)="deleteitem($event, cartItem)">Delete</button></td>
+            <td>{{cartItem.id}}
             </td>
-            <td>{{pizza.name}}
+            <td>{{cartItem.name}}
             </td>
-            <td>{{pizza.description}}
+            <td>{{cartItem.description}}
               </td>
-              <td>{{pizza.price}}
+              <td>{{cartItem.price}}
                 </td>
-                <td>{{pizza.quantity}}
+                <td>{{cartItem.quantity}}
                 </td>
-                <td>{{pizza.orderdescription}}
+                <td>{{cartItem.orderdescription}}
                 </td>
           </tr>
           <!--<tr>
@@ -47,36 +47,35 @@
                       <mat-header-cell *matHeaderCellDef>
                        Select
                       </mat-header-cell>
-                      <mat-cell *matCellDef="let pizza">
-                          <button mat-raised-button color="primary" [routerLink]="['/updatepizza', pizza._id]">Primary</button>
-                          <button mat-raised-button (click)="deletepizza($event, pizza)">Delete</button>
+                      <mat-cell *matCellDef="let cartItem">
+                          <button mat-raised-button (click)="deletecartItem($event, cartItem)">Delete</button>
                       </mat-cell>
                     </ng-container>
                 <ng-container matColumnDef="name">
-                  <mat-header-cell *matHeaderCellDef> Pizza Name </mat-header-cell>
-                  <mat-cell *matCellDef="let pizza"> {{pizza.name}} </mat-cell>
+                  <mat-header-cell *matHeaderCellDef> cartItem Name </mat-header-cell>
+                  <mat-cell *matCellDef="let cartItem"> {{cartItem.name}} </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="image">
                   <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
-                  <mat-cell *matCellDef="let pizza"><mat-card class="example-card">
+                  <mat-cell *matCellDef="let cartItem"><mat-card class="example-card">
                      
            
                    
-                      <img class="image-size"  src="{{BaseURL + pizza.image}}" alt={{pizza.name}}>
+                      <img class="image-size"  src="{{BaseURL + cartItem.pizzas[0].image}}" alt={{cartItem.pizzas[0].name}}>
                   
                     </mat-card></mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="description">
                   <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-                  <mat-cell *matCellDef="let pizza"> {{pizza.description}} </mat-cell>
+                  <mat-cell *matCellDef="let cartItem"> {{cartItem.description}} </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="price">
                   <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
-                  <mat-cell *matCellDef="let pizza"> {{pizza.price}} </mat-cell>
+                  <mat-cell *matCellDef="let cartItem"> {{cartItem.pizzas[0].price}} </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="category">
                     <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
-                    <mat-cell *matCellDef="let pizza"> {{pizza.category}} </mat-cell>
+                    <mat-cell *matCellDef="let cartItem"> {{cartItem.category}} </mat-cell>
                 </ng-container>
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

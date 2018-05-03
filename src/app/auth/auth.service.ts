@@ -6,7 +6,8 @@ import { Subject } from 'rxjs/Subject';
 import { RestangularModule, Restangular } from 'ngx-restangular';
 import { baseURL } from '../models/baseurl';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 @Injectable()
 export class AuthService {
@@ -20,7 +21,6 @@ export class AuthService {
     this.authSuccessfully(true);
    return  this.http.post(baseURL + 'users', authdata, { headers: this.getHeaders() });
     //this.restangular.all('User').customPOST(this.user);
-    
   }
   private getHeaders(){
     let headers = new Headers();
@@ -31,11 +31,25 @@ export class AuthService {
     this.user = {
       email: authdata.email,
       userId: Math.round(Math.random()*10000).toString(),
-      admin: false
-        };
+      admin: false 
+    };
     this.authSuccessfully(this.user.admin);
   }
+public extractData(res: Response) {
+  let body = res.json();
+  if(body || {}){
+  
+  }
+  else{
+    this.router.navigate(['/login']);
+  }
+  return {};
+}
 
+private handleError(error: any): Promise<any> {
+  console.error('An error occurred', error);
+  return Promise.reject(error.message || error);
+}
   logout(){
     this.user = null;
     this.authChange.next(false);

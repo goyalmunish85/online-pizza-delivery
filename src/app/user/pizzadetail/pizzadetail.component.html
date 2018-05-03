@@ -34,7 +34,7 @@
         </form>
 
         <div fxLayout="row" fxLayoutAlign="space-evenly center">
-            <button mat-raised-button>Back</button>
+            <button mat-raised-button [routerLink]="['/menu']">Back</button>
             <button (click)="addToCart(addToCartForm)" mat-raised-button color="primary" [disabled]="addToCartForm.invalid">Add To Cart</button>
         </div>
     </div>

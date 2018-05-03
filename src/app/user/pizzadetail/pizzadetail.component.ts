@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PizzaService } from '../../services/pizza.service';
 import { CartService } from '../../services/cart.service';
-
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { RestangularModule, Restangular } from 'ngx-restangular';
@@ -30,7 +30,7 @@ export class PizzadetailComponent implements OnInit {
     this.route.params.switchMap((params: Params) => this.pizzaservice.getPizza(params['id']))
       .subscribe(selectedPizza => this.selectedPizza = selectedPizza);
   }
-  constructor(public snackBar: MatSnackBar, private cartService: CartService, private fb: FormBuilder, private pizzaservice: PizzaService, private route: ActivatedRoute,
+  constructor(private router: Router,public snackBar: MatSnackBar, private cartService: CartService, private fb: FormBuilder, private pizzaservice: PizzaService, private route: ActivatedRoute,
     @Inject('BaseURL') private BaseURL) {
   }
 
@@ -59,6 +59,8 @@ export class PizzadetailComponent implements OnInit {
         alert(`Error is : ${error.error.message}`);
         console.log(error);
       })
+
+      this.router.navigate(['/cart']);
   }
 
 }

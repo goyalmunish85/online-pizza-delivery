@@ -3,3 +3,9 @@ export interface User{
     userId: string;
     admin: boolean;
 }
+
+
+export interface loginCred{
+    email: string,
+    password: string
+}
