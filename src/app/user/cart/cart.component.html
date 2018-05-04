@@ -39,21 +39,20 @@
       </table>
       <button type="button" class="btn btn-primary" (click)="placeorder($event, cartItems)">Place Order</button>
           </div> --> 
+          <!-- <div fxLayout="row">
 
-
-          <div>
               <mat-table [dataSource]="dataSource">
                   <ng-container matColumnDef="select">
                       <mat-header-cell *matHeaderCellDef>
                        Select
                       </mat-header-cell>
                       <mat-cell *matCellDef="let cartItem">
-                          <button mat-raised-button (click)="deletecartItem($event, cartItem)">Delete</button>
+                          <button mat-raised-button (click)="deleteCartItem($event, cartItem)">Delete</button>
                       </mat-cell>
                     </ng-container>
                 <ng-container matColumnDef="name">
                   <mat-header-cell *matHeaderCellDef> cartItem Name </mat-header-cell>
-                  <mat-cell *matCellDef="let cartItem"> {{cartItem.name}} </mat-cell>
+                  <mat-cell *matCellDef="let cartItem"> {{cartItem.pizzas[0].name}} </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="image">
                   <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
@@ -67,7 +66,7 @@
                 </ng-container>
                 <ng-container matColumnDef="description">
                   <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-                  <mat-cell *matCellDef="let cartItem"> {{cartItem.description}} </mat-cell>
+                  <mat-cell *matCellDef="let cartItem"> {{cartItem.pizzas[0].description}} </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="price">
                   <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
@@ -75,13 +74,16 @@
                 </ng-container>
                 <ng-container matColumnDef="category">
                     <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
-                    <mat-cell *matCellDef="let cartItem"> {{cartItem.category}} </mat-cell>
+                    <mat-cell *matCellDef="let cartItem"> {{cartItem.pizzas[0].category}} </mat-cell>
                 </ng-container>
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
               </mat-table>
             </div>
-            
+             -->
             <!-- Copyright 2018 Google Inc. All Rights Reserved.
                 Use of this source code is governed by an MIT-style license that
                 can be found in the LICENSE file at http://angular.io/license -->
+
+                <button mat-raised-button (click)="placeorder()">Place Order</button>
+                {{this.o|json}}

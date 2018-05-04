@@ -13,6 +13,7 @@ import { UpdatepizzaComponent } from '../admin/updatepizza/updatepizza.component
 import { FooterComponent } from '../footer/footer.component';
 import { CartComponent } from '../user/cart/cart.component';
 import { PizzadetailComponent } from '../user/pizzadetail/pizzadetail.component';
+import { ContactComponent } from '../user/contact/contact.component';
 import { OrderdetailComponent } from '../admin/orderdetail/orderdetail.component';
 import { VieworderComponent } from '../admin/vieworder/vieworder.component';
 import { AuthGuard } from '../auth/auth.guard';
@@ -25,21 +26,21 @@ import { WelcomeComponent } from '../welcome/welcome.component';
 export const routes: Routes = [
     
     {path: 'home',     component:HomeComponent , canActivate: [ AuthGuard ]},
-    {path: 'menu', component:MenuComponent , canActivate: [ RoleGuard]},
+    {path: 'menu', component:MenuComponent , canActivate: [ AuthGuard ] },
     {path: 'cart',     component:CartComponent , canActivate: [ AuthGuard ]},
-
+    {path: 'contactus',     component:ContactComponent , canActivate: [ AuthGuard ]},
     { path: '', component: WelcomeComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'login', component: LoginComponent },
 
-    {path: 'add-pizza', component: AddpizzaComponent},
-    {path: 'edit-pizza', component: EditpizzaComponent},
-    {path: 'edit-orders',component:EditordersComponent},
-    {path:'update-order-status',component:UpdateorderstatusComponent},
-    {path:'view-sales',component:ViewsalesComponent},
-    {path:'view-order',component:VieworderComponent},
-    {path:'view-feedback',component:ViewfeedbackComponent},
-    {path: 'updatepizza/:id', component: UpdatepizzaComponent },
+    {path: 'add-pizza', component: AddpizzaComponent, canActivate: [ RoleGuard] },
+    {path: 'edit-pizza', component: EditpizzaComponent, canActivate: [ RoleGuard] },
+    {path: 'edit-orders',component:EditordersComponent, canActivate: [ RoleGuard] },
+    {path:'update-order-status',component:UpdateorderstatusComponent, canActivate: [ RoleGuard] },
+    {path:'view-sales',component:ViewsalesComponent, canActivate: [ RoleGuard] },
+    {path:'view-order',component:VieworderComponent, canActivate: [ RoleGuard] },
+    {path:'view-feedback',component:ViewfeedbackComponent, canActivate: [ RoleGuard] },
+    {path: 'updatepizza/:id', component: UpdatepizzaComponent , canActivate: [ RoleGuard] },
     {path: 'pizza-detail/:id', component: PizzadetailComponent },
     {path: 'order-detail/:id', component: OrderdetailComponent }
 ] 

@@ -12,11 +12,10 @@ import { OrderService } from '../../services/order.service';
   styleUrls: ['./orderdetail.component.css']
 })
 export class OrderdetailComponent implements OnInit {
-  o: order;
+ 
   ngOnInit() {
     //this.pizzaservice.getPizzas().subscribe(pizzas => this.pizzas = pizzas);
-    this.route.params.switchMap((params: Params)=> this.orderservice.getOrder(+params['id'])) 
-            .subscribe(o => this.o = o);
+   
   }
    constructor(private fb: FormBuilder,private orderservice: OrderService, private route: ActivatedRoute) {
   }

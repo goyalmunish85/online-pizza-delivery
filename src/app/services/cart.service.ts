@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map'
 import { RestangularModule, Restangular } from 'ngx-restangular';
 import { pizza } from '../models/pizza';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-
+import {UserIdService} from './user-id.service';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/delay';
@@ -19,10 +19,10 @@ import 'rxjs/add/operator/catch';
 export class CartService {
 
   constructor(private restangular: Restangular,private http: Http,
-    private processHTTPMsgService: ProcessHttpmsgService) { }
+    private processHTTPMsgService: ProcessHttpmsgService, private userId: UserIdService) { }
 
     getCartItems(): Observable<Cart[]> {
-      return this.http.get(baseURL + 'cart')
+      return this.http.get(baseURL +'cart/' + this.userId.getId() )
                       .map(res => { return this.processHTTPMsgService.extractData(res); })
                       .catch(error => { return this.processHTTPMsgService.handleError(error); });
     }
@@ -42,12 +42,8 @@ export class CartService {
     postCartItem(Cart): Observable<Response> {
       return this.http.post(baseURL + 'cart', Cart, { headers: this.getHeaders() });
     }
-    
-    updatePizza(pizza, id:any): Observable<Response> {
-      return this.http.put(baseURL + 'pizzas/'+ id, pizza, { headers: this.getHeaders() });
-    }
-
-    deletePizza(id: any): Observable<Response>{
-      return this.http.delete(baseURL + 'pizzas/'+ id, { headers: this.getHeaders()});
+  
+    deleteCartItem(id: any): Observable<Response>{
+      return this.http.delete(baseURL + 'cart/'+ id, { headers: this.getHeaders()});
     }
 }

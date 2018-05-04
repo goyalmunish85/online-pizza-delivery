@@ -10,7 +10,7 @@ export class RoleGuard implements CanActivate{
     
     //standard method used to implement CanActivate
     canActivate( route :ActivatedRouteSnapshot, state: RouterStateSnapshot ){
-        if(this.authser.isAdmin() == true){
+        if(this.authser.isAuth()== true && this.authser.isAdmin() == true){
             return true;
         }
         else{

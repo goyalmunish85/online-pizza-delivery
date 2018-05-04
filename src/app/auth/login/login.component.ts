@@ -14,14 +14,23 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-  config;
   credentials: AuthData;
+  result;
+  pizzas;
+  errMess;
   submit(form: NgForm){
-    this.authser.login({
+    this.credentials = {
       email: form.value.email,
       password : form.value.password
-    });
-  }
-  
+    };
+    this.authser.succes(this.credentials).subscribe(pizzas => {this.pizzas = pizzas, this.authser.checkFun(pizzas)},
+      errmess => this.errMess = <any>errmess);
 
+    // this.authser.login({
+    //   email: form.value.email,
+    //   password : form.value.password
+    // });
+  }
+
+  
 }

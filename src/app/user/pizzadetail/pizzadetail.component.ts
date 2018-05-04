@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Observable';
 import { RestangularModule, Restangular } from 'ngx-restangular';
 import { MatSnackBar } from '@angular/material';
 import { FormControl } from '@angular/forms';
-
+import { UserIdService } from '../../services/user-id.service';
 @Component({
   selector: 'app-pizzadetail',
   templateUrl: './pizzadetail.component.html',
@@ -30,15 +30,16 @@ export class PizzadetailComponent implements OnInit {
     this.route.params.switchMap((params: Params) => this.pizzaservice.getPizza(params['id']))
       .subscribe(selectedPizza => this.selectedPizza = selectedPizza);
   }
-  constructor(private router: Router,public snackBar: MatSnackBar, private cartService: CartService, private fb: FormBuilder, private pizzaservice: PizzaService, private route: ActivatedRoute,
+  constructor(private router: Router,private userId: UserIdService,public snackBar: MatSnackBar, private cartService: CartService, private fb: FormBuilder, private pizzaservice: PizzaService, private route: ActivatedRoute,
     @Inject('BaseURL') private BaseURL) {
   }
 
   addToCart(form: NgForm) {
    // this.selectedPizza.id += 1;
     //let atocart = Object.assign(form.value, this.selectedPizza);
+  
     this.cart = {
-      u_id : this.selectedPizza._id,
+      u_id : this.userId.getId(),
       p_id : this.selectedPizza._id,
       quantity: form.value.quantity,
       orderdescription: form.value.orderdescription 
