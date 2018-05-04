@@ -11,21 +11,29 @@
         <a routerLink="/menu" mat-button routerLinkActive="active">
             <span class="fa fa-list fa-lg"></span> Menu</a>
             <a mat-button routerLink="/contactus" routerLinkActive="active"><span class="fa fa-address-card fa-lg"></span> Contact</a>
-        <a routerLink="/cart" mat-button routerLinkActive="active">
-            <span class="fa fa-shopping-cart fa-lg"></span> Cart</a>
+        
     </div>
+  
     <div *ngIf="isAuth && isAdmin" class="links" fxFlex fxHide.xs>
+            <a routerLink="/home" mat-button routerLinkActive="active">
+                <span class="fa fa-home fa-lg"></span> Home</a>
         <a routerLink='add-pizza'  mat-button  routerLinkActive="active">Add Pizza</a>
         <a routerLink='edit-pizza'  mat-button  routerLinkActive="active">Edit Pizza</a>
         <a routerLink='view-order'  mat-button  routerLinkActive="active">View Order</a>
-        <a routerLink='edit-orders'  mat-button  routerLinkActive="active">Edit Orders</a>
+        <!-- <a routerLink='edit-orders'  mat-button  routerLinkActive="active">Edit Orders</a> -->
 
-        <a routerLink='update-order-status'  mat-button  routerLinkActive="active">Update Order Status</a>
+        <!-- <a routerLink='update-order-status'  mat-button  routerLinkActive="active">Update Order Status</a> -->
         <a routerLink='view-feedback'  mat-button  routerLinkActive="active">View Feedback</a>
         <a routerLink='view-sales'  mat-button routerLinkActive="active">View Sales</a>
     </div>
     <span class="flex-spacer"></span>
     <div class="links" fxFlex fxLayoutAlign="end" fxHide.xs>
+            <div *ngIf="isAuth && !isAdmin" fxHide.xs>
+                    <a routerLink="/yourorder" mat-button routerLinkActive="active">
+                        {{name}}</a>
+                    <a routerLink="/cart" mat-button routerLinkActive="active">
+                        <span class="fa fa-shopping-cart fa-lg"></span> Cart</a>
+                </div>
         <a routerLink="/login" mat-button *ngIf="!isAuth">
             <span class="fa fa-sign-in fa-lg"></span> Login</a>
         <a class="logout" mat-button (click)="onLogout()" *ngIf="isAuth">
@@ -39,23 +47,3 @@
 
 
 
-<!-- <nav class="navbar navbar-inverse navbar-toggleable-sm fixed-top">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#"><img src="img/logo.png" height="30" width="41"></a>
-            <div class="collapse navbar-collapse" id="Navbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-home fa-lg"></span> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-info fa-lg"></span> About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-list fa-lg"></span> Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
-                </ul>
-                <span class="navbar-text">
-                    <a data-toggle="modal" data-target="#loginModal">
-                        <span class="fa fa-sign-in"></span> Login</a>
-                </span>
-            </div>
-        </div>
-    </nav> -->

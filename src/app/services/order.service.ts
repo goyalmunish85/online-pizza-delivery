@@ -8,7 +8,7 @@ import { baseURL } from '../models/baseurl';
 import { ProcessHttpmsgService } from './process-httpmsg.service';
 import 'rxjs/add/operator/map'
 import { RestangularModule, Restangular } from 'ngx-restangular';
-import { pizza } from '../models/pizza';
+import { order } from '../models/order';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import {UserIdService} from './user-id.service';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
@@ -19,21 +19,22 @@ import 'rxjs/add/operator/catch';
 export class OrderService {
   constructor(private restangular: Restangular,private http: Http,
     private processHTTPMsgService: ProcessHttpmsgService, private userId: UserIdService) { }
-    getOrders() {
-
-      return this.restangular.all('orders').getList();
-  }
-
+    getOrders(): Observable<order[]> {
+      return this.http.get(baseURL +'orders' )
+                      .map(res => { console.log(res);return this.processHTTPMsgService.extractData(res);  })
+                      .catch(error => { return this.processHTTPMsgService.handleError(error); });
+    }
+    
   getOrder(id: number) {
     return  this.restangular.one('orders',id).get();
   }
   
-  // getCartItems(): Observable<Cart[]> {
-  //   return this.http.get(baseURL +'cart/' + this.userId.getId() )
-  //                   .map(res => { return this.processHTTPMsgService.extractData(res); })
-  //                   .catch(error => { return this.processHTTPMsgService.handleError(error); });
-  // }
-
+  getUserOrder(): Observable<order[]> {
+    return this.http.get(baseURL +'orders/' + this.userId.getId() )
+                    .map(res => { console.log(res);return this.processHTTPMsgService.extractData(res);  })
+                    .catch(error => { return this.processHTTPMsgService.handleError(error); });
+  }
+  
   // getPizza(id: any): Observable<Cart> {
   //   return  this.http.get(baseURL + 'pizzas/'+ id)
   //                   .map(res => { return this.processHTTPMsgService.extractData(res); })

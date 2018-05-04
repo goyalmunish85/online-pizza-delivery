@@ -19,7 +19,6 @@ import { HeaderComponent } from './header/header.component';
 import { AddpizzaComponent } from './admin/addpizza/addpizza.component';
 import { EditpizzaComponent } from './admin/editpizza/editpizza.component';
 import { EditordersComponent } from './admin/editorders/editorders.component';
-import { UpdateorderstatusComponent } from './admin/updateorderstatus/updateorderstatus.component';
 import { ViewsalesComponent } from './admin/viewsales/viewsales.component';
 import { ViewfeedbackComponent } from './admin/viewfeedback/viewfeedback.component';
 import { MenuComponent } from './user/menu/menu.component';
@@ -31,6 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PizzaService } from './services/pizza.service';
 import { OrderService } from './services/order.service';
 import { CartService } from './services/cart.service';
+import { FeedbackService } from './services/feedback.service';
+
 import { UserIdService } from './services/user-id.service';
 import { CartComponent } from './user/cart/cart.component';
 import { PizzadetailComponent } from './user/pizzadetail/pizzadetail.component';
@@ -39,11 +40,12 @@ import { ProcessHttpmsgService } from './services/process-httpmsg.service';
 import { RestangularModule, Restangular } from 'ngx-restangular';
 import { RestangularConfigFactory } from './models/restConfig';
 import { VieworderComponent } from './admin/vieworder/vieworder.component';
-import { OrderdetailComponent } from './admin/orderdetail/orderdetail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
 import { ContactComponent } from './user/contact/contact.component';
+import { YourorderComponent } from './user/yourorder/yourorder.component';
+import { TrackorderComponent } from './user/trackorder/trackorder.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +53,6 @@ import { ContactComponent } from './user/contact/contact.component';
     AddpizzaComponent,
     EditpizzaComponent,
     EditordersComponent,
-    UpdateorderstatusComponent,
     ViewsalesComponent,
     ViewfeedbackComponent,
     MenuComponent,
@@ -61,7 +62,6 @@ import { ContactComponent } from './user/contact/contact.component';
     CartComponent,
     PizzadetailComponent,
     VieworderComponent,
-    OrderdetailComponent,
     LoginComponent,
 
     SignupComponent,
@@ -76,6 +76,10 @@ import { ContactComponent } from './user/contact/contact.component';
     AdminComponent,
 
     ContactComponent,
+
+    YourorderComponent,
+
+    TrackorderComponent,
 
     //AdminComponent
   ],
@@ -95,7 +99,7 @@ import { ContactComponent } from './user/contact/contact.component';
   providers: [
     PizzaService, AuthService,
     OrderService,
-    CartService,UserIdService,
+    CartService,UserIdService,FeedbackService,
     { provide: 'BaseURL', useValue: baseURL },
     ProcessHttpmsgService
   ],

@@ -40,6 +40,7 @@ export class AuthService {
    // if (authdata[0].password == this.data.password) {
      { //Uid(authdata[0]._id);
       this.userId.setId(authdata[0]._id);
+      this.userId.setName(authdata[0].name);
       this.authSuccessfully(authdata[0].role);
     }
   }

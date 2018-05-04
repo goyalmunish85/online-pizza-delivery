@@ -15,6 +15,6 @@ export class VieworderComponent implements OnInit {
   constructor(private restangular: Restangular,private orderService: OrderService) { }
   public orders;
   ngOnInit() {
-    // this.orderService.getOrders().subscribe(orders => this.orders = orders);
+    this.orderService.getOrders().subscribe(orders => this.orders = orders);
   };
 }
